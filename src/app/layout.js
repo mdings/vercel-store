@@ -1,4 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import Context from "./context.jsx";
+import Cart from "@/lib/components/cart.jsx";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,7 +24,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Context>
+          {children}
+          <Cart />
+        </Context>
       </body>
     </html>
   );
