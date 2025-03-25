@@ -12,7 +12,7 @@ function contentfulImageLoader({ src, width }) {
   return `${src}?w=400&h=500&fit=pad`;
 }
 
-function Productcard({ product }) {
+export function Productcard({ product }) {
   // const store = useContext(Store);
 
   const { cart } = useContext(CartContext);
@@ -97,5 +97,3 @@ function Productcard({ product }) {
     </Link>
   );
 }
-
-export default Productcard;

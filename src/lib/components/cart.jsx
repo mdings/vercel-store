@@ -2,18 +2,25 @@
 
 import React, { useContext, useState } from "react";
 import { CartContext } from "@/contexts/cart";
+import { Visible } from "@/lib/components";
 import localforage from "localforage";
 
 export function CartTrigger() {
   const { cart } = useContext(CartContext);
   return (
-    <span onClick={() => cart.toggleCart()}>
-      Winkelmandje &euro; {cart.cartTotal}
-    </span>
+    <div
+      className="hidden md:flex gap-2 items-baseline cursor-pointer bg-[#00000020] hover:bg-[#00000060] px-1 py-1 pl-3 transition-colors rounded-sm self-center"
+      onClick={(e) => cart.toggleCart()}
+    >
+      <span className="whitespace-nowrap">💰 Cart</span>
+      <span className="text-sm font-medium bg-[#E5E5E5] rounded-sm text-black w-20 text-center py-2 whitespace-nowrap">
+        &euro; {cart.cartTotal.toFixed(2)}
+      </span>
+    </div>
   );
 }
 
-export default function Cart() {
+export function Cart() {
   const { cart } = useContext(CartContext);
   const [loading, setLoading] = useState(false);
   const { setCartItems, toggleCart } = cart;
@@ -38,6 +45,11 @@ export default function Cart() {
 
   return (
     <>
+      <div
+        className="fixed w-screen h-screen left-0 top-0 bg-[#ffffff95] opacity-0 pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:pointer-events-auto transition-all"
+        data-visible={cart.cartVisible.toString()}
+        onClick={toggleCart}
+      ></div>
       <div
         className="fixed right-0 top-0 h-full w-[600px] bg-white text-black overflow-auto translate-x-full data-[show=true]:translate-x-0 transition-transform"
         data-show={cart.cartVisible.toString()}
