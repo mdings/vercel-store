@@ -1,16 +1,17 @@
 import client from ".";
 
-export async function getProductById(id) {
-  const products = await client.fetch(
-    `*[_id == "${id}"]{_id, content, price, _createdAt, stock, discontinued, sold, brand->{_id, name}}`,
-    {}
+export async function getProductBySlug(slug) {
+  console.log(slug);
+  const product = await client.fetch(
+    `*[_type == "product" && slug.current == $slug][0]{_id, content, slug, price, _createdAt, stock, discontinued, sold, brand->{_id, name}}`,
+    { slug }
   );
-  return products[0];
+  return product;
 }
 
 export async function getProducts() {
   const products = await client.fetch(
-    `*[_type == "product"]{_id, name, content, price, _createdAt, stock, sold, discontinued, brand->{_id, name}}`,
+    `*[_type == "product" && defined(slug.current)]{_id, name, slug, content, price, _createdAt, stock, sold, discontinued, brand->{_id, name}}`,
     {}
   );
   return products;

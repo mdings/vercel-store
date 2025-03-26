@@ -27,7 +27,7 @@ export function Productcard({ product }) {
   }
 
   return (
-    <Link href={`/product/${product.fields?.slug}`}>
+    <Link href={`/product/${product.slug?.current}`}>
       <div className="bg-[#ffffff09] rounded relative cursor-pointer h-full flex flex-col justify-between overflow-hidden">
         <div className="w-full">
           <div className="absolute top-3 left-3 flex gap-2 flex-wrap z-10">
