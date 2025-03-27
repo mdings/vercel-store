@@ -11,7 +11,8 @@ export async function getProductBySlug(slug) {
 
 export async function getProducts() {
   const products = await client.fetch(
-    `*[_type == "product" && defined(slug.current)]{_id, name, slug, content, price, _createdAt, stock, sold, discontinued, brand->{_id, name}}`,
+    // Only get the products that have a slug and images defined for the demo
+    `*[_type == "product" && defined(slug.current) && defined(images)]{_id, name, slug, content, price, _createdAt, stock, sold, discontinued, "images": images[]{"url": asset->url, "alt": alt },brand->{_id, name}}`,
     {}
   );
   return products;

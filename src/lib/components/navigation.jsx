@@ -5,7 +5,7 @@ const items = ["Home", "Shampoo", "Skincare", "Beards", "Deodorants"];
 
 export function Navigation({ children, className = "", navigation }) {
   return (
-    <nav className="flex justify-between  bg-[#ff5715] md:flex py-2 px-3 my-8 mb-0 rounded-sm rounded-b-none">
+    <nav className="sticky top-0 z-10 flex justify-between  bg-[#ff5715] md:flex py-2 px-3 my-8 mb-0 rounded-sm rounded-b-none">
       <ul className="flex text-black">
         {items.map((item, i) => {
           return (

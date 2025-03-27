@@ -9,7 +9,7 @@ import { CartContext } from "@/contexts/cart";
 // import { Addtocart } from './cartbutton.actions';
 
 function contentfulImageLoader({ src, width }) {
-  return `${src}?w=400&h=500&fit=pad`;
+  return src;
 }
 
 export function Productcard({ product }) {
@@ -25,6 +25,8 @@ export function Productcard({ product }) {
     // showToast();
     // toggleVisible();
   }
+
+  console.log(product.images);
 
   return (
     <Link href={`/product/${product.slug?.current}`}>
@@ -45,20 +47,28 @@ export function Productcard({ product }) {
             })}
           </div>
           <div className="flex flex-col p-3 md:p-4 pt-5 md:pt-10 gap-6">
-            {product.fields?.images && (
+            {/* {product?.images && (
               <Image
-                loader={contentfulImageLoader}
                 className="mx-auto pt-5 w-full max-w-[200px] h-auto"
-                src={product.fields.images[0].fields.file.url}
+                src={product.images[0].asset.url}
                 width="0"
                 height="0"
-                alt={`${product.brand.name} ${product.fields.title}`}
+                alt={`${product.brand.name} ${product.name}`}
                 sizes="600px"
               />
-            )}
-            {/* <div className="relative max-w-full h-auto min-h-[200px] md:h-[400px] md:max-w-sm self-center w-full" >
-              {product.fields?.images && <Image loader={contentfulImageLoader} className="object-contain p-3" src={'https://' + product.fields.images[0].fields.file.url} fill={true} alt={`${product.brand.name} ${product.fields.title}`} sizes="600px"  />}
-            </div> */}
+            )} */}
+            <div className="relative max-w-full h-auto min-h-[200px] md:h-[400px] md:max-w-sm self-center w-full">
+              {product.images?.length > 0 && (
+                <Image
+                  loader={contentfulImageLoader}
+                  className="object-contain p-3"
+                  src={product.images[0].url}
+                  fill={true}
+                  alt={`${product.brand.name} ${product.name}`}
+                  sizes="600px"
+                />
+              )}
+            </div>
             <div className="flex flex-col gap-2">
               <div className="md:max-w-xs">
                 <span className="text-white text-sm lg:text-lg">

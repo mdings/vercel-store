@@ -46,12 +46,12 @@ export function Cart() {
   return (
     <>
       <div
-        className="fixed w-screen h-screen left-0 top-0 bg-[#ffffff95] opacity-0 pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:pointer-events-auto transition-all"
+        className="fixed w-screen h-screen z-20 left-0 top-0 bg-[#ffffff95] opacity-0 pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:pointer-events-auto transition-all"
         data-visible={cart.cartVisible.toString()}
         onClick={toggleCart}
       ></div>
       <div
-        className="fixed right-0 top-0 h-full w-[600px] bg-white text-black overflow-auto translate-x-full data-[show=true]:translate-x-0 transition-transform"
+        className="fixed z-20 -right-10 top-0 h-full w-[600px] bg-white text-black overflow-auto translate-x-full data-[show=true]:translate-x-0 transition-transform"
         data-show={cart.cartVisible.toString()}
       >
         <span onClick={toggleCart}>Verder winkelen</span>
