@@ -15,7 +15,7 @@ export default async function Home() {
         <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold max-w-7xl space-x-3 xl:tracking-tight text-[#fff] underline underline-offset-2 xl:underline-offset-8 decoration-[#1bfe8e] ">
           The best natural and sustainable body and hair care for gentlemen.
         </h1>
-        <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-2 md:gap-6 md:gap-y-12 container-full">
+        <div className="grid grid-cols-2 md:grid-cols-3  gap-2 md:gap-6 md:gap-y-12 container-full">
           {products.map((product) => {
             return (
               <div key={product._id}>

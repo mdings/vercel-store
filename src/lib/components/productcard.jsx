@@ -47,25 +47,18 @@ export function Productcard({ product }) {
             })}
           </div>
           <div className="flex flex-col p-3 md:p-4 pt-5 md:pt-10 gap-6">
-            {/* {product?.images && (
-              <Image
-                className="mx-auto pt-5 w-full max-w-[200px] h-auto"
-                src={product.images[0].asset.url}
-                width="0"
-                height="0"
-                alt={`${product.brand.name} ${product.name}`}
-                sizes="600px"
-              />
-            )} */}
             <div className="relative max-w-full h-auto min-h-[200px] md:h-[400px] md:max-w-sm self-center w-full">
               {product.images?.length > 0 && (
                 <Image
                   loader={contentfulImageLoader}
                   className="object-contain p-3"
-                  src={product.images[0].url}
+                  src={`${product.images[0].url}?w=600&fm=webp&q=75`}
                   fill={true}
-                  alt={`${product.brand.name} ${product.name}`}
-                  sizes="600px"
+                  alt={`Product shot for ${product.brand.name} ${product.name}`}
+                  sizes="(max-width: 768px) 100vw, 600px"
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL={`${product.images[0].url}?w=50&fm=webp&q=20`}
                 />
               )}
             </div>

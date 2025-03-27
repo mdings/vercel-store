@@ -1,7 +1,6 @@
 import client from ".";
 
 export async function getProductBySlug(slug) {
-  console.log(slug);
   const product = await client.fetch(
     `*[_type == "product" && slug.current == $slug][0]{_id, content, slug, price, _createdAt, stock, discontinued, sold, brand->{_id, name}}`,
     { slug }
