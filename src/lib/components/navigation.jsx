@@ -24,7 +24,7 @@ const items = [
   },
 ];
 
-export function Navigation({ children, className = "", navigation }) {
+export function Navigation() {
   return (
     <nav className="sticky top-2 z-10 flex justify-between  bg-[#ff5715] md:flex py-2 px-3 my-8 mb-5 rounded-sm rounded-b-none max-w-6xl mx-auto">
       <ul className="flex text-black">

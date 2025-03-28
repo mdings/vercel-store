@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { useContext, useState } from "react";
 import { CartContext } from "@/contexts/cart";
 
-function contentfulImageLoader({ src, width }) {
+function sanityImageLoader({ src, width }) {
   return `${src}&w=${width}`;
 }
 
@@ -41,7 +41,7 @@ export function Productcard({ product }) {
             <div className="relative max-w-full h-auto min-h-[200px] md:h-[400px] md:max-w-sm self-center w-full">
               {product.images?.length > 0 && (
                 <Image
-                  loader={contentfulImageLoader}
+                  loader={sanityImageLoader}
                   className="object-contain p-3"
                   src={`${product.images[0].url}?fm=webp&q=75`}
                   fill={true}

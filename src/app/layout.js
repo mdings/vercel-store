@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Context from "./context.jsx";
-import { Cart, Navigation } from "@/lib/components";
+import { Cart, Navigation, TickerRibbon } from "@/lib/components";
 
 import "./globals.css";
 
@@ -44,9 +44,10 @@ export default function RootLayout({ children }) {
         <Topbar />
         <Context>
           <Navigation />
-          {children}
+          <div className="min-h-screen">{children}</div>
           <Cart />
         </Context>
+        <TickerRibbon />
       </body>
     </html>
   );
