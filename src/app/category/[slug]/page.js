@@ -11,10 +11,10 @@ export const metadata = {
 
 export default async function Product(props) {
   const { slug } = await props.params;
-  const products = await getProductsByCategory(slug);
-  const category = await getCategoryBySlug(slug);
-
-  console.log(category);
+  const [products, category] = await Promise.all([
+    getProductsByCategory(slug),
+    getCategoryBySlug(slug),
+  ]);
 
   return (
     <div className="flex flex-col gap-12">
