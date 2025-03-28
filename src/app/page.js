@@ -11,18 +11,20 @@ export default async function Home() {
 
   return (
     <>
-      <div>
-        <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold max-w-7xl space-x-3 xl:tracking-tight text-[#fff] underline underline-offset-2 xl:underline-offset-8 decoration-[#1bfe8e] ">
+      <div className="flex flex-col gap-12">
+        <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold space-x-3 xl:tracking-tight text-[#fff] underline underline-offset-2 xl:underline-offset-8 decoration-[#1bfe8e] max-w-6xl mx-auto">
           The best natural and sustainable body and hair care for gentlemen.
         </h1>
-        <div className="grid grid-cols-2 md:grid-cols-3  gap-2 md:gap-6 md:gap-y-12 container-full">
-          {products.map((product) => {
-            return (
-              <div key={product._id}>
-                <Productcard product={product} />
-              </div>
-            );
-          })}
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-6 md:gap-y-12">
+            {products.map((product) => {
+              return (
+                <div key={product._id}>
+                  <Productcard product={product} />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>

@@ -2,34 +2,25 @@
 
 import Image from "next/image";
 import Link from "next/link";
-// import Cartbutton from './cartbutton'
 import React, { useContext, useState } from "react";
 import { CartContext } from "@/contexts/cart";
-// import Store from '../global-context';
-// import { Addtocart } from './cartbutton.actions';
 
 function contentfulImageLoader({ src, width }) {
-  return src;
+  return `${src}&w=${width}`;
 }
 
 export function Productcard({ product }) {
-  // const store = useContext(Store);
-
   const { cart } = useContext(CartContext);
-  const { setCartTotal, setCartItems, cartItems, showToast } = cart;
+  const { setCartItems, cartItems } = cart;
 
   function AddToCart(e, product) {
     e.preventDefault();
     e.stopPropagation();
     setCartItems(cartItems.concat(product));
-    // showToast();
-    // toggleVisible();
   }
 
-  console.log(product.images);
-
   return (
-    <Link href={`/product/${product.slug?.current}`}>
+    <Link href={`/product/${product.slug?.current}`} prefetch={true}>
       <div className="bg-[#ffffff09] rounded relative cursor-pointer h-full flex flex-col justify-between overflow-hidden">
         <div className="w-full">
           <div className="absolute top-3 left-3 flex gap-2 flex-wrap z-10">
@@ -52,7 +43,7 @@ export function Productcard({ product }) {
                 <Image
                   loader={contentfulImageLoader}
                   className="object-contain p-3"
-                  src={`${product.images[0].url}?w=600&fm=webp&q=75`}
+                  src={`${product.images[0].url}?fm=webp&q=75`}
                   fill={true}
                   alt={`Product shot for ${product.brand.name} ${product.name}`}
                   sizes="(max-width: 768px) 100vw, 600px"
@@ -92,10 +83,15 @@ export function Productcard({ product }) {
             </div>
           </div>
         </div>
-        <span className="text-white" onClick={(e) => AddToCart(e, product)}>
-          Add to cart
-        </span>
-        {/* <Cartbutton product={product} className="w-full" onClick={e => Addtocart(e, product, store)} /> */}
+
+        <div className="w-full">
+          <button
+            className="text-white w-full p-2 bg-[#28367699] hover:bg-[#283676] transition-colors cursor-pointer"
+            onClick={(e) => AddToCart(e, product)}
+          >
+            Add to cart
+          </button>
+        </div>
       </div>
     </Link>
   );

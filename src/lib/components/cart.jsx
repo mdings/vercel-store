@@ -2,7 +2,6 @@
 
 import React, { useContext, useState } from "react";
 import { CartContext } from "@/contexts/cart";
-import { Visible } from "@/lib/components";
 import localforage from "localforage";
 
 export function CartTrigger() {

@@ -42,13 +42,11 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Topbar />
-        <div className="container mx-auto max-w-7xl">
-          <Context>
-            <Navigation />
-            {children}
-            <Cart />
-          </Context>
-        </div>
+        <Context>
+          <Navigation />
+          {children}
+          <Cart />
+        </Context>
       </body>
     </html>
   );
