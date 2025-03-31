@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { CartTrigger } from "@/lib/components";
+import { Carttrigger } from "@/lib/components";
 const items = [
   {
     label: "Home",
@@ -26,7 +26,7 @@ const items = [
 
 export function Navigation() {
   return (
-    <nav className="sticky top-2 z-10 flex justify-between  bg-[#ff5715] md:flex py-2 px-3 my-8 mb-5 rounded-sm rounded-b-none max-w-6xl mx-auto">
+    <nav className="sticky top-2 z-10 flex justify-between  bg-[#ff5715] md:flex py-2 px-3 my-8 mb-8 rounded-sm rounded-b-none max-w-6xl mx-auto">
       <ul className="flex text-black">
         {items.map(({ label, href }, i) => {
           return (
@@ -41,7 +41,7 @@ export function Navigation() {
           );
         })}
       </ul>
-      <CartTrigger />
+      <Carttrigger />
     </nav>
   );
 }

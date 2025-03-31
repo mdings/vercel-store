@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import { CartContext } from "@/contexts/cart";
 import localforage from "localforage";
 
-export function CartTrigger() {
+export function Carttrigger() {
   const { cart } = useContext(CartContext);
   return (
     <div

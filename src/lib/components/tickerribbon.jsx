@@ -1,4 +1,4 @@
-export function TickerRibbon() {
+export function Tickerribbon() {
   const message = "Jack salutes you my friend ✌🏽 Stay healthy, clean & fresh!";
 
   return (

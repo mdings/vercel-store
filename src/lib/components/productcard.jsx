@@ -1,57 +1,17 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import React, { useContext, useState } from "react";
-import { CartContext } from "@/contexts/cart";
-
-function sanityImageLoader({ src, width }) {
-  return `${src}&w=${width}`;
-}
+import React from "react";
+import { Cartbutton, Productimage } from "@/lib/components";
 
 export function Productcard({ product }) {
-  const { cart } = useContext(CartContext);
-  const { setCartItems, cartItems } = cart;
-
-  function AddToCart(e, product) {
-    e.preventDefault();
-    e.stopPropagation();
-    setCartItems(cartItems.concat(product));
-  }
-
   return (
     <Link href={`/product/${product.slug?.current}`} prefetch={true}>
       <div className="bg-[#ffffff09] rounded relative cursor-pointer h-full flex flex-col justify-between overflow-hidden">
-        <div className="w-full">
-          <div className="absolute top-3 left-3 flex gap-2 flex-wrap z-10">
-            {product.metadata?.tags?.map((label, i) => {
-              return (
-                label.sys.id.startsWith("label") && (
-                  <div
-                    key={i}
-                    className="bg-[#F896D8] text-black px-2 py-1 text-xs uppercase font-bold rounded-sm"
-                  >
-                    {label.sys.id.replace("label", "")}
-                  </div>
-                )
-              );
-            })}
-          </div>
+        <div className="w-full h-full flex flex-col justify-between">
           <div className="flex flex-col p-3 md:p-4 pt-5 md:pt-10 gap-6">
             <div className="relative max-w-full h-auto min-h-[200px] md:h-[400px] md:max-w-sm self-center w-full">
-              {product.images?.length > 0 && (
-                <Image
-                  loader={sanityImageLoader}
-                  className="object-contain p-3"
-                  src={`${product.images[0].url}?fm=webp&q=75`}
-                  fill={true}
-                  alt={`Product shot for ${product.brand.name} ${product.name}`}
-                  sizes="(max-width: 768px) 100vw, 600px"
-                  loading="lazy"
-                  placeholder="blur"
-                  blurDataURL={`${product.images[0].url}?w=50&fm=webp&q=20`}
-                />
-              )}
+              {product.images?.length > 0 && <Productimage product={product} />}
             </div>
             <div className="flex flex-col gap-2">
               <div className="md:max-w-xs">
@@ -82,15 +42,10 @@ export function Productcard({ product }) {
               </span>
             </div>
           </div>
-        </div>
 
-        <div className="w-full">
-          <button
-            className="text-white w-full p-2 bg-[#28367699] hover:bg-[#283676] transition-colors cursor-pointer"
-            onClick={(e) => AddToCart(e, product)}
-          >
-            Add to cart
-          </button>
+          <div className="w-full">
+            <Cartbutton product={product} />
+          </div>
         </div>
       </div>
     </Link>
